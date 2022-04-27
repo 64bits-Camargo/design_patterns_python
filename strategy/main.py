@@ -1,7 +1,7 @@
 from customer import Customer
 from order import Order
 from product import Product
-from promotion import BulkItemPromo, FidelityPromo, LargeOrderPromo
+from promotion import bulk_item_promo, fidelity_promo, large_order_promo, best_promo
 
 if __name__ == '__main__':
     cliente = Customer('Mateus', 1001)
@@ -14,6 +14,5 @@ if __name__ == '__main__':
 
     carrinho = [camisa, jaqueta, tenis, bone, oculos_de_sol]
 
-    order = Order(cliente, carrinho, FidelityPromo())
-
+    order = Order(cliente, carrinho, best_promo)
     print(order)

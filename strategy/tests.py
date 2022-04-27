@@ -3,7 +3,7 @@ import pytest
 from customer import Customer
 from order import Order
 from product import Product
-from promotion import BulkItemPromo, FidelityPromo, LargeOrderPromo
+from promotion import bulk_item_promo, fidelity_promo, large_order_promo
 
 
 @pytest.fixture()

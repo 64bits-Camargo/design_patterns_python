@@ -13,7 +13,7 @@ class Order:
     def total(self):
         discount = 0
         if self.promotion is not None:
-            discount = self.promotion.discount(self)
+            discount = self.promotion(self)
         return round(self.subtotal - discount, 2)
 
     def __repr__(self):
