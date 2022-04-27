@@ -1,8 +1,8 @@
 class Order:
 
-    def __init__(self, customer, cart, promotion=None):
+    def __init__(self, customer, products, promotion=None):
         self.customer = customer
-        self.products = list(cart)
+        self.products = list(products)
         self.promotion = promotion
 
     @property
