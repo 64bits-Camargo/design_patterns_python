@@ -16,5 +16,4 @@ if __name__ == '__main__':
 
     order = Order(cliente, carrinho, FidelityPromo())
 
-    print('Subtotal:', order.subtotal)
-    print('Total:', order.total)
+    print(order)

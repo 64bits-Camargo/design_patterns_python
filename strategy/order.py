@@ -15,3 +15,6 @@ class Order:
         if self.promotion is not None:
             discount = self.promotion.discount(self)
         return round(self.subtotal - discount, 2)
+
+    def __repr__(self):
+        return f"<class Order: total={self.total}, subtototal={self.subtotal}>"
