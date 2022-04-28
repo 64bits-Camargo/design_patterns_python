@@ -1,1 +1,0 @@
-!['UML Design Pattern - Strategy](strategy_uml.jpg)
