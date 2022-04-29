@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class ActionStock:
+class ActionStock(ABC):
 
     @staticmethod
     @abstractmethod
