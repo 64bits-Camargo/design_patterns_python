@@ -34,3 +34,6 @@ if __name__ == '__main__':
         invoker.take_order(f'sell_order_{order.id}_{index}', sell_stock)
 
     invoker.place_orders()
+    invoker.show_history()
+
+    invoker.reprocess_last_place_orders(2)
