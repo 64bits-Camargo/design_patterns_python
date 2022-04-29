@@ -5,7 +5,7 @@ from strategy.product import Product
 from strategy.customer import Customer
 from strategy.promotion import best_promo
 
-from stock import Stock, BuyStock, SellStock
+from stock import Stock, BuyStock, SellStock, ReceiverStock
 from invoker import Invoker
 
 
@@ -23,14 +23,14 @@ if __name__ == '__main__':
     order = Order(cliente, carrinho, best_promo)
 
     invoker = Invoker()
+    for index, item in enumerate(order.products):
+        receiver = ReceiverStock()
+        stock = Stock(item)
 
-    for item in order.products:
-        stock_product = Stock(item)
+        buy_stock = BuyStock(receiver, stock)
+        sell_stock = SellStock(receiver, stock)
 
-        buy_stock = BuyStock(stock_product)
-        sell_stock = SellStock(stock_product)
-
-        invoker.take_order(buy_stock)
-        invoker.take_order(sell_stock)
+        invoker.take_order(f'buy_order_{order.id}_{index}', buy_stock)
+        invoker.take_order(f'sell_order_{order.id}_{index}', sell_stock)
 
     invoker.place_orders()

@@ -1,29 +1,43 @@
 from abc import ABC, abstractmethod
 
 
-class CommandStock(ABC):
+class ActionStock:
 
+    @staticmethod
     @abstractmethod
-    def execute(self):
+    def execute():
         pass
 
 
-class BuyStock(CommandStock):
+class ReceiverStock:
 
-    def __init__(self, stock):
+    @staticmethod
+    def buy(stock):
+        stock.buy()
+
+    @staticmethod
+    def sell(stock):
+        stock.sell()
+
+
+class BuyStock(ActionStock):
+
+    def __init__(self, receiver, stock):
+        self._receiver = receiver
         self.stock = stock
 
     def execute(self):
-        self.stock.buy()
+        self._receiver.buy(self.stock)
 
 
-class SellStock(CommandStock):
+class SellStock(ActionStock):
 
-    def __init__(self, stock):
+    def __init__(self, receiver, stock):
+        self._receiver = receiver
         self.stock = stock
 
     def execute(self):
-        self.stock.sell()
+        self._receiver.sell(self.stock)
 
 
 class Stock:

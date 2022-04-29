@@ -1,6 +1,10 @@
+import uuid
+
+
 class Order:
 
     def __init__(self, customer, products, promotion=None):
+        self.id = uuid.uuid1()
         self.customer = customer
         self.products = list(products)
         self.promotion = promotion
