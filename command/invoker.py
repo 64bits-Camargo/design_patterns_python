@@ -2,10 +2,15 @@ from datetime import datetime
 from time import time
 import traceback
 
+from observer.subject import Subject
+from observer.observer import  Observer
+
 
 class Invoker:
 
-    def __init__(self):
+    def __init__(self, customer, order):
+        self.customer = customer
+        self.order = order
         self._actions = {}
         self._errors = {}
         self._history = []
@@ -14,6 +19,9 @@ class Invoker:
         self._actions[command_id] = command
 
     def place_orders(self):
+        send_notify = Subject()
+        observer = Observer(send_notify)
+
         actions_copy_dict = self._actions.copy()
         for command_id, command in actions_copy_dict.items():
             try:
@@ -22,6 +30,9 @@ class Invoker:
                 print(f'{command_id} --- processed with success!')
             except AttributeError:
                 self._errors[command_id] = traceback.format_exception()
+
+        if not self._errors:
+            observer.notify(f"Pedido {}")
 
     def show_history(self):
         for row in self._history:

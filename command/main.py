@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     order = Order(cliente, carrinho, best_promo)
 
-    invoker = Invoker()
+    invoker = Invoker(cliente, order)
     for index, item in enumerate(order.products):
         receiver = ReceiverStock()
         stock = Stock(item)
